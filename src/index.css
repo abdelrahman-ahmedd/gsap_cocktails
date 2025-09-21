@@ -90,10 +90,10 @@ body {
     }
 
     #hero {
-        @apply relative z-10 min-h-dvh w-full border border-transparent;
+        @apply relative z-10 min-h-dvh w-full ;
 
         h1 {
-            @apply md:mt-32 mt-40 text-8xl md:text-[20vw] leading-none text-center font-modern-negra;
+            @apply md:pt-32 pt-40 text-8xl md:text-[20vw] leading-none text-center font-modern-negra;
         }
 
         .left-leaf {
@@ -368,7 +368,225 @@ body {
         }
 
         .drink-img {
-            @apply absolute bottom-0 right-0 lg:w-96 w-1/3 pointer-events-none;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 24rem;
+            pointer-events: none;
         }
+        
+        @media (max-width: 1024px) {
+            .drink-img {
+                width: 33.333333%;
+            }
+        }
+    }
+}
+
+/* Circular Cards Layout */
+.cocktails-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+}
+
+.cocktails-section .container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cocktails-section .section-title {
+    font-size: 4rem;
+    font-family: "Modern Negra", sans-serif;
+    color: #e7d393;
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+    .cocktails-section .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.circle-container {
+    position: absolute;
+    left: -15%;
+    top: 10%;
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
+    animation: rotateCarousel 40s linear infinite;
+}
+
+/* Keyframes for carousel rotation */
+@keyframes rotateCarousel {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .circle-container {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-container {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+.circle-container-right {
+    position: absolute;
+    right: -15%;
+    top: 10%;
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
+    animation: rotateCarouselReverse 40s linear infinite;
+}
+
+/* Keyframes for reverse carousel rotation */
+@keyframes rotateCarouselReverse {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .circle-container-right {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-container-right {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+.cocktail-card {
+    position: absolute;
+    width: 15rem;
+    height: 8rem;
+    
+    border-radius: 1rem;
+    
+    transition: all 0.3s ease;
+    left: 50%;
+    top: 50%;
+    overflow: hidden;
+    
+    /* Dynamic circle positioning using CSS custom properties */
+    /* Since the container rotates, we counter-rotate the cards to keep them upright */
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-300px) rotate(calc(-1 * var(--angle, 0deg)));
+    animation: counterRotate 40s linear infinite;
+}
+
+/* Counter-rotate cards to keep them horizontal while container spins */
+@keyframes counterRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-300px) rotate(calc(-1 * var(--angle, 0deg))) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-300px) rotate(calc(-1 * var(--angle, 0deg))) rotate(-360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .cocktail-card {
+        width: 6rem;
+        height: 8rem;
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-150px) rotate(calc(-1 * var(--angle, 0deg)));
+    }
+}
+
+@media (max-width: 480px) {
+    .cocktail-card {
+        width: 5rem;
+        height: 7rem;
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-120px) rotate(calc(-1 * var(--angle, 0deg)));
+    }
+}
+
+.cocktail-card-right {
+    position: absolute;
+    width: 15rem;
+    height: 8rem;
+    
+    border-radius: 1rem;
+    
+    transition: all 0.3s ease;
+    left: 50%;
+    top: 50%;
+    overflow: hidden;
+    
+    /* Dynamic circle positioning for right side with reverse rotation */
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-300px) rotate(calc(-1 * var(--angle, 0deg)));
+    animation: counterRotateReverse 40s linear infinite;
+}
+
+/* Counter-rotate cards on right side to keep them horizontal while container spins in reverse */
+@keyframes counterRotateReverse {
+    from {
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-300px) rotate(calc(-1 * var(--angle, 0deg))) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-300px) rotate(calc(-1 * var(--angle, 0deg))) rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .cocktail-card-right {
+        width: 6rem;
+        height: 8rem;
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-150px) rotate(calc(-1 * var(--angle, 0deg)));
+    }
+}
+
+@media (max-width: 480px) {
+    .cocktail-card-right {
+        width: 5rem;
+        height: 7rem;
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-120px) rotate(calc(-1 * var(--angle, 0deg)));
+    }
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .card-content img {
+        border-radius: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-content img {
+        border-radius: 1rem;
     }
 }

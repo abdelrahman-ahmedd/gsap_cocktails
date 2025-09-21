@@ -1,67 +1,70 @@
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap';
-import { cocktailLists, mockTailLists } from '../../constants/index.js'
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { cocktailLists, mockTailLists } from "../../constants/index.js";
 
 const Cocktails = () => {
- useGSAP(() => {
-	const parallaxTimeline = gsap.timeline({
-	 scrollTrigger: {
-		trigger: '#cocktails',
-		start: 'top 30%',
-		end: 'bottom 80%',
-		scrub: true,
-	 }
-	})
-	
-	parallaxTimeline
-	 .from('#c-left-leaf', {
-		x: -100, y: 100
-	})
-	 .from('#c-right-leaf', {
-		x: 100, y: 100
-	})
- })
- 
- return (
-	<section id="cocktails" className="noisy">
-	 <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id="c-left-leaf" />
-	 <img src="/images/cocktail-right-leaf.png" alt="r-leaf" id="c-right-leaf" />
-	 
-	 <div className="list">
-		<div className="popular">
-		 <h2>Most popular cocktails:</h2>
-		 
-		 <ul>
-			{cocktailLists.map(({ name, country, detail, price }) => (
-			 <li key={name}>
-				<div className="md:me-28">
-				 <h3>{name}</h3>
-				 <p>{country} | {detail}</p>
-				</div>
-				<span>- {price}</span>
-			 </li>
-			))}
-		 </ul>
-		</div>
-		
-		<div className="loved">
-		 <h2>Most loved mocktails:</h2>
-		 
-		 <ul>
-			{mockTailLists.map(({ name, country, detail, price }) => (
-			 <li key={name}>
-				<div className="me-28">
-				 <h3>{name}</h3>
-				 <p>{country} | {detail}</p>
-				</div>
-				<span>- {price}</span>
-			 </li>
-			))}
-		 </ul>
-		</div>
-	 </div>
-	</section>
- )
-}
+  useGSAP(() => {
 
-export default Cocktails
+
+
+  });
+
+  // Sample cocktail data (you can replace with your actual data)
+  const cocktailData = [
+    { id: 1,  image: "/images/abt1.png" },
+    { id: 2,  image: "/images/abt2.png" },
+    { id: 3,  image: "/images/abt3.png" },
+    { id: 4,  image: "/images/abt4.png" },
+    { id: 5,  image: "/images/abt5.png" },
+    { id: 6,  image: "/images/abt2.png" },
+  ];
+
+  return (
+    <section id="cocktails" className="cocktails-section">
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black to-black/60 pointer-events-none -z-1"></div>
+      <div className="container">
+        <h2 className="section-title z-10">Our Cocktails</h2>
+        <div className="circle-container">
+          {cocktailData.map((cocktail, index) => {
+            const angle = (index * 360) / cocktailData.length; // Dynamic angle calculation
+            return (
+              <div
+                key={cocktail.id}
+                className="cocktail-card"
+                style={{
+                  "--angle": `${angle}deg`,
+                }}
+              >
+                <div className="card-content">
+                  <img src={cocktail.image} alt={cocktail.name} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        
+        {/* Right-side circular animation with reverse rotation */}
+        <div className="circle-container-right">
+          {cocktailData.map((cocktail, index) => {
+            const angle = (index * 360) / cocktailData.length; // Dynamic angle calculation
+            return (
+              <div
+                key={`right-${cocktail.id}`}
+                className="cocktail-card-right"
+                style={{
+                  "--angle": `${angle}deg`,
+                }}
+              >
+                <div className="card-content">
+                  <img src={cocktail.image} alt={cocktail.name} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Cocktails;
