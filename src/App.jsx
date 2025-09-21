@@ -12,17 +12,23 @@ import Contact from './components/Contact.jsx'
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
- return (
-	<main>
-	 <Navbar />
-	 <Hero />
-	 <Cocktails />
-	 <About />
-	 <Art />
-	 <Menu />
-	 <Contact />
+return (
+	<main style={{
+		backgroundImage: 'url("/images/bg.jpg")',
+		backgroundSize: 'auto',
+		backgroundPosition: 'center',
+		backgroundRepeat: 'no-repeat',
+		backgroundAttachment: 'fixed'
+	}}>
+		<Navbar />
+		<Hero />
+		<Cocktails />
+		<About />
+		<Art />
+		<Menu />
+		<Contact />
 	</main>
- )
+)
 }
 
 export default App

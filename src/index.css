@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lobster&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 
 @import "tailwindcss";
 
@@ -13,6 +13,7 @@
     --font-sans: "Mona Sans", sans-serif;
     --font-modern-negra: "Modern Negra", sans-serif;
     --font-serif: "DM Serif Text", serif;
+    --font-lobster: "Lobster", cursive;
 }
 
 html,
@@ -117,17 +118,14 @@ body {
                     @apply 2xl:text-start text-center;
                 }
 
-                .view-cocktails {
+                /* .view-cocktails {
                     @apply space-y-5 text-lg lg:max-w-2xs md:max-w-xs w-full;
 
                     p {
                         @apply text-left;
                     }
 
-                    a {
-                        @apply font-semibold opacity-80 2xl:text-start text-center hover:text-yellow;
-                    }
-                }
+                } */
             }
         }
     }
