@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const App = () => {
 return (
 	<main style={{
-		backgroundImage: 'url("/images/bg.jpg")',
+		backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,1), rgba(0,0,0,0.6)), url("/images/bg.jpg")',
 		backgroundSize: 'auto',
 		backgroundPosition: 'center',
 		backgroundRepeat: 'no-repeat',

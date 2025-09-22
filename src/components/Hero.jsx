@@ -39,19 +39,19 @@ const Hero = () => {
 
     gsap
       .timeline({
-        scrollTrigger: {
-          trigger: "#hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
       })
       .to(".right-leaf", { y: 200 }, 0)
       .to(".left-leaf", { y: -200 }, 0)
       .to(".arrow", { y: 100 }, 0);
 
     const startValue = isMobile ? "top 50%" : "center 60%";
-    const endValue = isMobile ? "120% top" : "bottom top";
+    const endValue = isMobile ? "120% top" : "120% top";
 
     let tl = gsap.timeline({
       scrollTrigger: {
@@ -73,7 +73,6 @@ const Hero = () => {
   return (
     <>
       <section id="hero">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black to-black/60 pointer-events-none -z-1"></div>
         <div className="z-10">
           <h1 className=" title">LUMEERA</h1>
 
